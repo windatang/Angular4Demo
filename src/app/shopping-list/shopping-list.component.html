@@ -1,0 +1,11 @@
+<app-shopping-edit (onAddIngredient)="onSubmit($event)"></app-shopping-edit>
+<hr class="">
+
+<div class="col-sm-12">
+
+  <ul class="list-group">
+    <li class="list-group-item"   *ngFor="let ingredient of ingredients; let i = index ">
+      <app-shopping-list-item [ingredient]="ingredient"></app-shopping-list-item>
+    </li>
+  </ul>
+</div>

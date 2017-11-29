@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "app/variables";
+//@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.dropdown.show .dropdown-menu{
+  display: block;
+}
+.navbar.show .collapse{
+  display: block;
+}

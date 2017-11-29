@@ -1,0 +1,64 @@
+<div class="container">
+  <!--<form action="" (ngSubmit)="onSubmit(recipeForm)" #recipeForm="ngForm" [formGroup]="recipeForm">-->
+  <form action="" (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+    <!--<div class="col-sm-12"></div>-->
+    <button class="btn btn-success" type="submit" >Save</button>
+    <button class="btn btn-danger" type="reset" (click)="recipeForm.reset()">Cancel</button>
+    <div class="form-group">
+      <label for="recipename">Name</label>
+      <input type="text" id="recipename" class="form-control"
+              name="name" formControlName="name" required/>
+      <div  *ngIf="!recipeForm.get('name').valid && (recipeForm.get('name').dirty || recipeForm.get('name').touched)"
+            class="alert alert-danger">
+
+        <div *ngIf="recipeForm.get('name').errors['required']">
+          Name is required.
+        </div>
+        <div *ngIf="recipeForm.get('name').errors['minlength']">
+          Name must be at least 4 characters long.
+        </div>
+        <!--<div *ngIf="recipename.errors.forbiddenName">-->
+          <!--Name cannot be Bob.-->
+        <!--</div>-->
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="recipeImageurl">Image URl</label>
+      <input type="text" id="recipeImageurl" class="form-control"  name="imagePath" formControlName="imagePath" />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea type="text" id="description" class="form-control"  name="description" formControlName="description">{{recipe.description}}</textarea>
+    </div>
+    <div class="form-group" formArrayName="ingredients">
+      <label for="description">Ingtedients</label>
+      <div class="form-row"
+      *ngFor="let ingredientCtrl of recipeForm.get('ingredients')['controls']; let i = index"
+      [formGroupName]="i">
+        <div class="form-group col-md-7">
+          <label for="IngtedientName" class="d-none">Ingtedient name</label>
+          <input type="text" class="form-control" id="IngtedientName" formControlName="name">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="IngtedientCount" class="d-none">Ingtedient Count</label>
+          <input type="number" class="form-control" id="IngtedientCount" formControlName="amount">
+        </div>
+        <div class="form-group col-md-2">
+          <button class="btn btn-danger col" (click)="onRemoveIndteient(i)">X</button>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="onAddIngredient()">Add Ingredient</button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,54 @@
+<div class="col-sm-12">
+  <form (ngSubmit)="onSubmit(shopingList)" #shopingList="ngForm"  >
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label for="inputName">Name</label>
+        <input type="text"
+               class="form-control"
+               id="inputName"
+               required
+               placeholder="Please input ingredient name"
+               name="name" #ingredientName="ngModel" ngModel>
+        <div *ngIf="ingredientName.invalid && (ingredientName.dirty || ingredientName.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="ingredientName.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="ingredientName.errors.minlength">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="ingredientName.errors.forbiddenName">
+            Name cannot be Bob.
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputAmount">Amount</label>
+        <input type="number" class="form-control" id="inputAmount" placeholder="10" name="amount" ngModel #amount="ngModel" required>
+        <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="amount.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="amount.errors.minlength">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="amount.errors.forbiddenName">
+            Name cannot be Bob.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="">
+      <button class="btn btn-success" type="submit" [disabled]="!shopingList.valid">Update</button>
+      <button class="btn btn-danger" type="button">Delete</button>
+      <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+    </div>
+
+
+  </form>
+</div>
+

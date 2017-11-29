@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-5">
+    <div class="container">
+      <div class="row">
+        <button class="btn btn-success" (click)="addNewRecipe()"> New Recipe</button>
+      </div>
+      <hr class="row">
+      <!--<app-recipe-list (select)="handleSelectRecipe($event)" [recipes]="recipes"></app-recipe-list>-->
+      <app-recipe-list  [recipes]="recipes"></app-recipe-list>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <router-outlet></router-outlet>
+
+    <!--<app-recipe-detail *ngIf="selectedRecipe!=null; else showOvervie"  [recipe]="selectedRecipe" ></app-recipe-detail>-->
+    <!--<ng-template #showOvervie><app-recipe-overview></app-recipe-overview></ng-template>-->
+
+  </div>
+</div>

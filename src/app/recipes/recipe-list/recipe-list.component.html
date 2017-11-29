@@ -1,0 +1,12 @@
+<div class="list-group row">
+  <!--Router-->
+  <app-recipe-item  *ngFor="let recipe of recipes; let i = index; let odd=odd;"
+                    [recipe]="recipe" class="list-group-item list-group-item-action container-fluid"
+                    [routerLink]="[i]"
+  > </app-recipe-item>
+  <!--&lt;!&ndash;Customer Event&ndash;&gt;-->
+  <!--<app-recipe-item  *ngFor="let recipe of recipes; let i = index; let odd=odd;"-->
+                    <!--[recipe]="recipe" class="list-group-item list-group-item-action container-fluid"-->
+                    <!--(click)="onSelect($event,i)"-->
+  <!--&gt;</app-recipe-item>-->
+</div>
