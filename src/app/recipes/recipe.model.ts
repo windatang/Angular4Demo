@@ -61,3 +61,12 @@ export class Recipe {
   //   };
   // }
 }
+
+
+
+// export interface Recipe  {
+//    name: string,
+//    description: string,
+//    imagePath: string,
+//    ingredients: Ingredient[]
+// }

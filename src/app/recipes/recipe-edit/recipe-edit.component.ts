@@ -32,11 +32,13 @@ export class RecipeEditComponent implements OnInit {
       if (this.recipe == null) {
         this.router.navigate(['/recipes/new']);
         this.editMode = false;
+        this.recipe = new Recipe("","","",[]);
+
         // this.router.navigate([]);
       }else {
         this.editMode = true;
-        this.initForm();
       }
+      this.initForm();
     });
   }
   onAddIngredient() {

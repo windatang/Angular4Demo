@@ -1,8 +1,9 @@
 <div class="container">
   <!--<form action="" (ngSubmit)="onSubmit(recipeForm)" #recipeForm="ngForm" [formGroup]="recipeForm">-->
-  <form action="" (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+
+  <form action="" (ngSubmit)="onSubmit()" [formGroup]="recipeForm" >
     <!--<div class="col-sm-12"></div>-->
-    <button class="btn btn-success" type="submit" >Save</button>
+    <button class="btn btn-success" type="submit" [disabled]="!recipeForm.valid">Save</button>
     <button class="btn btn-danger" type="reset" (click)="recipeForm.reset()">Cancel</button>
     <div class="form-group">
       <label for="recipename">Name</label>
@@ -22,14 +23,33 @@
         <!--</div>-->
 
       </div>
+
     </div>
     <div class="form-group">
       <label for="recipeImageurl">Image URl</label>
       <input type="text" id="recipeImageurl" class="form-control"  name="imagePath" formControlName="imagePath" />
+      <div  *ngIf="!recipeForm.get('imagePath').valid && (recipeForm.get('imagePath').dirty || recipeForm.get('imagePath').touched)"
+            class="alert alert-danger">
+
+        <div *ngIf="recipeForm.get('imagePath').errors['required']">
+          Name is required.
+        </div>
+        <!--<div *ngIf="recipename.errors.forbiddenName">-->
+        <!--Name cannot be Bob.-->
+        <!--</div>-->
+
+      </div>
     </div>
     <div class="form-group">
       <label for="description">Description</label>
       <textarea type="text" id="description" class="form-control"  name="description" formControlName="description">{{recipe.description}}</textarea>
+      <div  *ngIf="!recipeForm.get('description').valid && (recipeForm.get('description').dirty || recipeForm.get('description').touched)"
+            class="alert alert-danger">
+
+        <div *ngIf="recipeForm.get('description').errors['required']">
+          Name is required.
+        </div>
+      </div>
     </div>
     <div class="form-group" formArrayName="ingredients">
       <label for="description">Ingtedients</label>
